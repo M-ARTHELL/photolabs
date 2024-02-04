@@ -1,11 +1,15 @@
 import React from 'react';
-
+import PhotoListItem from '../components/PhotoListItem';
+import PhotoFavButton from '../components/PhotoFavButton';
+import PhotoList from 'components/PhotoList';
+import TopNavigation from 'components/TopNavigationBar';
 import '../styles/HomeRoute.scss';
 
 const HomeRoute = () => {
   return (
     <div className="home-route">
-      {/* Insert React */}
+      <TopNavigation />
+      <PhotoList />
     </div>
   );
 };
