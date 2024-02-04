@@ -9,7 +9,7 @@ function PhotoFavButton() {
   const [like, setLike] = useState(false);
 
   return (
-    <div className="photo-list__fav-icon" onClick={() => like ? setLike(false) : setLike(true)}>
+    <div className="photo-list__fav-icon" onClick={() => setLike(prevLike => !prevLike)}>
       <div className="photo-list__fav-icon-svg">
         <FavIcon selected={like} />
       </div>
