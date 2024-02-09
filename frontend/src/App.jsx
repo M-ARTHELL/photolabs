@@ -1,8 +1,6 @@
-import React from 'react';
-
+import React, {useState} from 'react';
 import HomeRoute from 'routes/HomeRoute';
 import './App.scss';
-
 
 const App = () => {
   return (
