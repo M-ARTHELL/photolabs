@@ -4,7 +4,7 @@ import TopNavigation from 'components/TopNavigationBar';
 import '../styles/HomeRoute.scss';
 import { useCallback, useState } from 'react';
 
-const HomeRoute = () => {
+const HomeRoute = (props) => {
 
   const [favorites, setFavorites] = useState([]);
 
@@ -33,6 +33,7 @@ function toggleFavs(photoId) {
         favorites={favorites}
         setFavorites={setFavorites}
         toggleFavs={toggleFavs}
+        handleModal={props}
       />
     </div>
   );

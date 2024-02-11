@@ -13,7 +13,7 @@ const PhotoListItem = (props) => {
         favHandler={props.favHandler}
       />
 
-      <img src={props.sampleData.urls.regular} className="photo-list__image"/>
+      <img src={props.sampleData.urls.regular} className="photo-list__image" onClick={(photoId) => props.handleModal.toggleModal(photoId)}/>
 
       <div className="photo-list__user-details">
         <img src={props.sampleData.user.profile} className="photo-list__user-profile" />

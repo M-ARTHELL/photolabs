@@ -12,6 +12,7 @@ const PhotoList = (props) => {
         key={photo.id}
         sampleData={photo}
         favHandler={props}
+        handleModal={props.handleModal}
         />)})}
     </ul>
   );

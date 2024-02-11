@@ -5,14 +5,14 @@ import '../styles/PhotoFavButton.scss';
 
 
 
-function PhotoFavButton(props) {
+function PhotoFavButton({id, favHandler}) {
 
   return (
     <div
       className="photo-list__fav-icon"
-      onClick={() => props.favHandler.toggleFavs(props.id)}>
+      onClick={() => favHandler.toggleFavs(id)}>
       <div className="photo-list__fav-icon-svg">
-        <FavIcon selected={props.favHandler.favorites.includes(props.id)} />
+        <FavIcon selected={favHandler.favorites.includes(id)} />
       </div>
     </div>
   );
