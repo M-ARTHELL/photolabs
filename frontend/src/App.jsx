@@ -4,10 +4,11 @@ import PhotoDetailsModal from 'routes/PhotoDetailsModal';
 import './App.scss';
 
 const App = () => {
-  const [isModalVisible, setModalVisible] = useState(false);
+  const [isModalVisible, setModalVisible] = useState(null);
 
-  const toggleModal = function() {
-    return setModalVisible(bool => !bool)
+  const toggleModal = function(photo) {
+    console.log(photo)
+    return setModalVisible(photo)
   }
 
   return (
