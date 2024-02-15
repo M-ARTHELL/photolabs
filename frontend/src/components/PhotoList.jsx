@@ -11,8 +11,12 @@ const PhotoList = (props) => {
         <PhotoListItem
         key={photo.id}
         sampleData={photo}
-        favHandler={props}
-        handleModal={props.handleModal}
+        favorites={props.favorites}
+        setFavorites={props.setFavorites}
+        toggleFavs={props.toggleFavs}
+        toggleModal={props.toggleModal}
+        isModalVisible={props.isModalVisible}
+        setModalVisible={props.setModalVisible}
         />)})}
     </ul>
   );
