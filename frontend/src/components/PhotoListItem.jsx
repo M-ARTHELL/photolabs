@@ -10,10 +10,12 @@ const PhotoListItem = (props) => {
     <div className="photo-list__item">
       <PhotoFavButton
         id={props.sampleData.id}
-        favHandler={props.favHandler}
+        favorites={props.favorites}
+        setFavorites={props.setFavorites}
+        toggleFavs={props.toggleFavs}
       />
 
-      <img src={props.sampleData.urls.regular} className="photo-list__image" onClick={() => props.handleModal.toggleModal(props.sampleData)}/>
+      <img src={props.sampleData.urls.regular} className="photo-list__image" onClick={() => props.toggleModal(props.sampleData)}/>
 
       <div className="photo-list__user-details">
         <img src={props.sampleData.user.profile} className="photo-list__user-profile" />
