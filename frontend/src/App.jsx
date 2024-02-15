@@ -5,10 +5,26 @@ import './App.scss';
 
 const App = () => {
   const [isModalVisible, setModalVisible] = useState(null);
+  const [favorites, setFavorites] = useState([]);
+
+  function toggleFavs(photoId) {
+  
+    if (favorites.includes(photoId)) {
+      setFavorites((prev) => {
+        return prev.filter((tempId) => tempId !== photoId);
+      });
+  
+    } else {
+      setFavorites((prev) => {
+        return [...prev, photoId];
+      });
+    }
+  };
 
   const toggleModal = function(photo) {
-    console.log(photo)
-    return setModalVisible(photo)
+    return (
+      setModalVisible(photo)
+      )
   }
 
   return (
@@ -17,9 +33,21 @@ const App = () => {
       <HomeRoute
       toggleModal={toggleModal}
       isModalVisible={isModalVisible}
-      setModalVisible={setModalVisible}/>
+      setModalVisible={setModalVisible}
+      favorites={favorites}
+      setFavorites={setFavorites}
+      toggleFavs={toggleFavs}
+      />
 
-      {isModalVisible && <PhotoDetailsModal toggleModal={toggleModal}/>}
+      {isModalVisible &&
+      <PhotoDetailsModal
+      toggleModal={toggleModal}
+      photo={isModalVisible}
+      setModalVisible={setModalVisible}
+      favorites={favorites}
+      setFavorites={setFavorites}
+      toggleFavs={toggleFavs}
+      />}
     </div>
   );
 };

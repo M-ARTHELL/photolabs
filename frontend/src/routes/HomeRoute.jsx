@@ -6,34 +6,20 @@ import { useCallback, useState } from 'react';
 
 const HomeRoute = (props) => {
 
-  const [favorites, setFavorites] = useState([]);
-
-function toggleFavs(photoId) {
-  
-  if (favorites.includes(photoId)) {
-    setFavorites((prev) => {
-      return prev.filter((tempId) => tempId !== photoId);
-    });
-
-  } else {
-    setFavorites((prev) => {
-      return [...prev, photoId];
-    });
-  }
-};
-
   return (
     <div className="home-route">
       <TopNavigation
-        favorites={favorites}
-        setFavorites={setFavorites}
-        toggleFavs={toggleFavs}
+        favorites={props.favorites}
+        setFavorites={props.setFavorites}
+        toggleFavs={props.toggleFavs}
       />
       <PhotoList
-        favorites={favorites}
-        setFavorites={setFavorites}
-        toggleFavs={toggleFavs}
-        handleModal={props}
+        toggleModal={props.toggleModal}
+        isModalVisible={props.isModalVisible}
+        setModalVisible={props.setModalVisible}
+        favorites={props.favorites}
+        setFavorites={props.setFavorites}
+        toggleFavs={props.toggleFavs}
       />
     </div>
   );
