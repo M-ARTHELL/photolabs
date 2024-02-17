@@ -6,7 +6,7 @@ import './App.scss';
 
 const App = () => {
   
-  const {favorites, toggleFavs, setFavorites, isModalVisible, toggleModal, setModalVisible} = useApplicationData();
+  const {favorites, toggleFavs, isModalVisible, toggleModal} = useApplicationData();
 
   return (
     <div className="App">
@@ -14,9 +14,7 @@ const App = () => {
       <HomeRoute
       toggleModal={toggleModal}
       isModalVisible={isModalVisible}
-      setModalVisible={setModalVisible}
       favorites={favorites}
-      setFavorites={setFavorites}
       toggleFavs={toggleFavs}
       />
 
@@ -24,13 +22,11 @@ const App = () => {
       <PhotoDetailsModal
       toggleModal={toggleModal}
       photo={isModalVisible}
-      setModalVisible={setModalVisible}
       favorites={favorites}
-      setFavorites={setFavorites}
       toggleFavs={toggleFavs}
       />}
     </div>
   );
-};
+}
 
 export default App;

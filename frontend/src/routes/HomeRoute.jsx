@@ -10,15 +10,12 @@ const HomeRoute = (props) => {
     <div className="home-route">
       <TopNavigation
         favorites={props.favorites}
-        setFavorites={props.setFavorites}
         toggleFavs={props.toggleFavs}
       />
       <PhotoList
         toggleModal={props.toggleModal}
         isModalVisible={props.isModalVisible}
-        setModalVisible={props.setModalVisible}
         favorites={props.favorites}
-        setFavorites={props.setFavorites}
         toggleFavs={props.toggleFavs}
       />
     </div>

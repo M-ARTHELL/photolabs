@@ -1,39 +1,91 @@
-import React, {useState} from 'react';
+import React, {useReducer} from 'react';
 
-function useApplicationData() {
-  const [isModalVisible, setModalVisible] = useState(null);
-  const [favorites, setFavorites] = useState([]);
+const ACTIONS = {
+  TOGGLE_LIKED: "TOGGLE_FAVS",
+  TOGGLE_MODAL: "TOGGLE_MODAL",
+}
 
-
-  function toggleFavs(photoId) {
-    if (favorites.includes(photoId)) {
-      setFavorites((prev) => {
-        return prev.filter((tempId) => tempId !== photoId);
-      });
-  
-    } else {
-      setFavorites((prev) => {
-        return [...prev, photoId];
-      });
-    }
-  };
-
-
-  const toggleModal = function(photo) {
-    return (
-      setModalVisible(photo)
-      )
-  }
-
-
-  return {
-    favorites,
-    toggleFavs,
-    setFavorites,
-    isModalVisible,
-    toggleModal,
-    setModalVisible
+function reducer(state, action) {
+  switch (action.type) {
+    case ACTIONS.TOGGLE_FAVS:
+      if (state.favorites.includes(action.photoId)) {
+        return {
+          ...state,
+          favorites: state.favorites.filter((tempId) => tempId !== action.photoId),
+        };
+      } else {
+        return { ...state, favorites: [...state.favorites, action.photoId] };
+      }
+    case ACTIONS.TOGGLE_MODAL:
+      return {
+        ...state,
+        isModalVisible: action.photo,
+      };
+    default:
+      throw new Error(
+        `Tried to reduce with unsupported action type: ${action.type}`
+      );
   }
 }
+
+const initialState = {
+  favorites: [],
+  isModalVisible: null,
+}
+
+export function useApplicationData() {
+  const [state, dispatch] = useReducer(reducer, { ...initialState });
+
+  const toggleFavs = function(photoId) {
+    dispatch({ type: ACTIONS.TOGGLE_FAVS, photoId: photoId });
+  };
+  
+  const toggleModal = function(isModalVisible) {
+      dispatch({ type: ACTIONS.TOGGLE_MODAL, photo: isModalVisible });
+  };
+
+  return {
+    favorites: state.favorites,
+    toggleFavs,
+    isModalVisible: state.isModalVisible,
+    toggleModal,
+  };
+};
+
+// function useApplicationData() {
+//   const [isModalVisible, setModalVisible] = useState(null);
+//   const [favorites, setFavorites] = useState([]);
+
+
+//   function toggleFavs(photoId) {
+//     if (favorites.includes(photoId)) {
+//       setFavorites((prev) => {
+//         return prev.filter((tempId) => tempId !== photoId);
+//       });
+  
+//     } else {
+//       setFavorites((prev) => {
+//         return [...prev, photoId];
+//       });
+//     }
+//   };
+
+
+//   const toggleModal = function(photo) {
+//     return (
+//       setModalVisible(photo)
+//       )
+//   }
+
+
+//   return {
+//     favorites,
+//     toggleFavs,
+//     setFavorites,
+//     isModalVisible,
+//     toggleModal,
+//     setModalVisible
+//   }
+// }
 
 export default useApplicationData;
