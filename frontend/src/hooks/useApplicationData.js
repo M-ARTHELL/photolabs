@@ -1,7 +1,6 @@
 import React, {useReducer, useEffect} from 'react';
 
 
-// setup
 export const ACTIONS = {
   TOGGLE_FAVS: "TOGGLE_FAVS",
   TOGGLE_MODAL: "TOGGLE_MODAL",
@@ -18,7 +17,6 @@ const initialState = {
 };
 
 
-// reducer
 function reducer(state, action) {
   switch (action.type) {
 
@@ -31,7 +29,6 @@ function reducer(state, action) {
       } else {
         return { ...state, favorites: [...state.favorites, action.photoId] };
       }
-
     case ACTIONS.TOGGLE_MODAL:
       return {
         ...state,
@@ -53,7 +50,7 @@ function reducer(state, action) {
           ...state,
           photoData: action.payload,
         }
-
+        
     default:
       throw new Error(
         `Tried to reduce with unsupported action type: ${action.type}`
@@ -62,7 +59,6 @@ function reducer(state, action) {
 }
 
 
-// useApplicationData
 export function useApplicationData() {
   const [state, dispatch] = useReducer(reducer, { ...initialState });
 
@@ -95,7 +91,6 @@ export function useApplicationData() {
       dispatch({ type: ACTIONS.TOGGLE_MODAL, photo: specifiedPhoto });
   };
 
-
   return {
     toggleFavs,
     toggleModal,
@@ -105,5 +100,4 @@ export function useApplicationData() {
 };
 
 
-//export
 export default useApplicationData;

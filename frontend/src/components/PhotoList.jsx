@@ -1,6 +1,6 @@
 import React from "react";
-import "../styles/PhotoList.scss";
 import PhotoListItem from "./PhotoListItem";
+import "../styles/PhotoList.scss";
 
 const PhotoList = ({favorites, setFavorites, toggleFavs,toggleModal, setModalVisible, photos}) => {
   return (

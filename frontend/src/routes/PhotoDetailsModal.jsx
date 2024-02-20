@@ -1,52 +1,48 @@
 import React from 'react';
-import PhotoList from 'components/PhotoList';
-import '../styles/PhotoDetailsModal.scss';
 import closeSymbol from '../assets/closeSymbol.svg';
 import PhotoFavButton from 'components/PhotoFavButton';
+import PhotoList from 'components/PhotoList';
+import '../styles/PhotoDetailsModal.scss';
 
-const PhotoDetailsModal = (props) => {
+const PhotoDetailsModal = ({photos, toggleModal, specifiedPhoto, favorites, setFavorites, toggleFavs, setModalVisible}) => {
   
   return (
     <div className="photo-details-modal">
-
       <button className="photo-details-modal__close-button">
-        <img src={closeSymbol} alt="close symbol" onClick={() => props.toggleModal()}/>
+        <img src={closeSymbol} alt="close symbol" onClick={() => toggleModal()}/>
       </button>
 
-      <PhotoFavButton
-      id={props.specifiedPhoto.id}
-      favorites={props.favorites}
-      setFavorites={props.setFavorites}
-      toggleFavs={props.toggleFavs}
-      />
-
-      <img src={props.specifiedPhoto.urls.full} className='photo-details-modal__image'></img>
-
-      <div className='photo-details-modal__header'>
-        <div className="photo-details-modal__photographer-info">
-
-          <img src={props.specifiedPhoto.user.profile} className='photo-details-modal__photographer-profile' />
-
-          <div className='photo-details-modal__photographer-details'>
-
-            {props.specifiedPhoto.user.name}
-
-          </div>
-
-          <div className='photo-details-modal__photographer-location'>{props.specifiedPhoto.location.city}, {props.specifiedPhoto.location.country}</div>
-
-        </div>
-      </div>
       <div className='photo-details-modal__images'>
-      <h3>Similar Photos</h3>
+        <PhotoFavButton
+        id={specifiedPhoto.id}
+        favorites={favorites}
+        setFavorites={setFavorites}
+        toggleFavs={toggleFavs}
+        />
 
-      <PhotoList
-        toggleModal={props.toggleModal}
-        photos={props.photos}
-        setModalVisible={props.setModalVisible}
-        favorites={props.favorites}
-        setFavorites={props.setFavorites}
-        toggleFavs={props.toggleFavs}
+        <img src={specifiedPhoto.urls.full} className='photo-details-modal__image'></img>
+
+        <div className='photo-details-modal__header'>
+          <div className="photo-details-modal__photographer-info">
+
+            <img src={specifiedPhoto.user.profile}  className='photo-details-modal__photographer-profile'/>
+
+            <div className='photo-details-modal__photographer-details'>
+              {specifiedPhoto.user.name}
+            </div>
+
+           <div className='photo-details-modal__photographer-location'>{specifiedPhoto.location.city}, {specifiedPhoto.location.country}
+           </div>
+          </div>
+        </div>
+       <h3>Similar Photos</h3>
+       <PhotoList
+        toggleModal={toggleModal}
+        photos={photos}
+        setModalVisible={setModalVisible}
+        favorites={favorites}
+        setFavorites={setFavorites}
+        toggleFavs={toggleFavs}
       />
       </div>
     </div>
