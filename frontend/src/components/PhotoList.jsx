@@ -1,22 +1,20 @@
 import React from "react";
 import "../styles/PhotoList.scss";
 import PhotoListItem from "./PhotoListItem";
-import photos from "mocks/photos";
 
-const PhotoList = (props) => {
+const PhotoList = ({favorites, setFavorites, toggleFavs,toggleModal, setModalVisible, photos}) => {
   return (
     <ul className="photo-list">
-      {photos.map((photo) => {
+      {photos?.map((photo) => {
         return (
         <PhotoListItem
         key={photo.id}
-        sampleData={photo}
-        favorites={props.favorites}
-        setFavorites={props.setFavorites}
-        toggleFavs={props.toggleFavs}
-        toggleModal={props.toggleModal}
-        isModalVisible={props.isModalVisible}
-        setModalVisible={props.setModalVisible}
+        photos={photo}
+        favorites={favorites}
+        setFavorites={setFavorites}
+        toggleFavs={toggleFavs}
+        toggleModal={toggleModal}
+        setModalVisible={setModalVisible}
         />)})}
     </ul>
   );

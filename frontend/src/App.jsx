@@ -6,24 +6,27 @@ import './App.scss';
 
 const App = () => {
   
-  const {favorites, toggleFavs, isModalVisible, toggleModal} = useApplicationData();
+  const {toggleFavs, toggleModal, state} = useApplicationData();
 
   return (
     <div className="App">
 
       <HomeRoute
       toggleModal={toggleModal}
-      isModalVisible={isModalVisible}
-      favorites={favorites}
+      specifiedPhoto={state.specifiedPhoto}
+      favorites={state.favorites}
       toggleFavs={toggleFavs}
+      photos={state.photoData}
+      topics={state.topicData}
       />
 
-      {isModalVisible &&
+      {state.specifiedPhoto &&
       <PhotoDetailsModal
       toggleModal={toggleModal}
-      photo={isModalVisible}
-      favorites={favorites}
+      specifiedPhoto={state.specifiedPhoto}
+      favorites={state.favorites}
       toggleFavs={toggleFavs}
+      photos={state.photoData}
       />}
     </div>
   );

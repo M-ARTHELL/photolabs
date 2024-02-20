@@ -9,21 +9,21 @@ const PhotoListItem = (props) => {
   return (
     <div className="photo-list__item">
       <PhotoFavButton
-        id={props.sampleData.id}
+        id={props.photos.id}
         favorites={props.favorites}
         setFavorites={props.setFavorites}
         toggleFavs={props.toggleFavs}
       />
 
-      <img src={props.sampleData.urls.regular} className="photo-list__image" onClick={() => props.toggleModal(props.sampleData)}/>
+      <img src={props.photos.urls.regular} className="photo-list__image" onClick={() => props.toggleModal(props.photos)}/>
 
       <div className="photo-list__user-details">
-        <img src={props.sampleData.user.profile} className="photo-list__user-profile" />
+        <img src={props.photos.user.profile} className="photo-list__user-profile" />
 
         <div className="photo-list__user-info">
-          {props.sampleData.user.username}
+          {props.photos.user.username}
 
-          <div className="photo-list__user-location">{props.sampleData.location.city}, {props.sampleData.location.country}</div>
+          <div className="photo-list__user-location">{props.photos.location.city}, {props.photos.location.country}</div>
         </div>
       </div>
     </div>
