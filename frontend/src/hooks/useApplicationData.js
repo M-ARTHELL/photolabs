@@ -1,6 +1,7 @@
 import React, {useReducer, useEffect} from 'react';
 
 
+//reducer actions
 export const ACTIONS = {
   TOGGLE_FAVS: "TOGGLE_FAVS",
   TOGGLE_MODAL: "TOGGLE_MODAL",
@@ -9,6 +10,7 @@ export const ACTIONS = {
   GET_PHOTOS_BY_TOPIC: "GET_PHOTOS_BY_TOPIC",
 };
 
+//initual state
 const initialState = {
   favorites: [],
   topicData: [],
@@ -17,9 +19,13 @@ const initialState = {
 };
 
 
+//reducer
+//updates the provided state with the provided action
 function reducer(state, action) {
   switch (action.type) {
 
+    //checks if the photo is already included in the favorites array
+    //if so, it removes it. otherwise, it will add it.
     case ACTIONS.TOGGLE_FAVS:
       if (state.favorites.includes(action.photoId)) {
         return {
@@ -29,16 +35,19 @@ function reducer(state, action) {
       } else {
         return { ...state, favorites: [...state.favorites, action.photoId] };
       }
+
     case ACTIONS.TOGGLE_MODAL:
       return {
         ...state,
         specifiedPhoto: action.photo,
       };
+
     case ACTIONS.SET_PHOTO_DATA:
       return {
         ...state,
         photoData: action.payload,
       };
+
     case ACTIONS.SET_TOPIC_DATA:
       return {
         ...state,
@@ -59,6 +68,8 @@ function reducer(state, action) {
 }
 
 
+//useApplicationData
+//custom hook that fetches data and updates the state
 export function useApplicationData() {
   const [state, dispatch] = useReducer(reducer, { ...initialState });
 
