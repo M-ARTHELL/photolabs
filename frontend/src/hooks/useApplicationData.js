@@ -1,6 +1,5 @@
 import React, {useReducer, useEffect} from 'react';
 
-
 //reducer actions
 export const ACTIONS = {
   TOGGLE_FAVS: "TOGGLE_FAVS",
@@ -73,6 +72,7 @@ function reducer(state, action) {
 export function useApplicationData() {
   const [state, dispatch] = useReducer(reducer, { ...initialState });
 
+  //fetch photo data
   useEffect(() => {
     fetch("/api/photos")
       .then((res) => res.json())
@@ -80,6 +80,7 @@ export function useApplicationData() {
       .catch((error) => { console.error('Error:', error)});
   }, []);
 
+  //fetch topic data
   useEffect(() => {
     fetch("/api/topics")
       .then((res) => res.json())
@@ -87,6 +88,7 @@ export function useApplicationData() {
       .catch((error) => { console.error('Error:', error)});
   }, []);
 
+  //fetch photo data of specified topic
   const selectedTopic = (topicId) => {
     fetch(`/api/topics/photos/${topicId}`)
     .then((res) => res.json())
@@ -94,14 +96,17 @@ export function useApplicationData() {
     .catch((error) => { console.error('Error:', error)});
   };
 
+  //add or remove from favorites
   const toggleFavs = function(photoId) {
     dispatch({ type: ACTIONS.TOGGLE_FAVS, photoId: photoId });
   };
   
+  //open or close the photo modal
   const toggleModal = function(specifiedPhoto) {
       dispatch({ type: ACTIONS.TOGGLE_MODAL, photo: specifiedPhoto });
   };
 
+  //return state and functions to be used elsewhere
   return {
     toggleFavs,
     toggleModal,
@@ -111,4 +116,5 @@ export function useApplicationData() {
 };
 
 
+//export
 export default useApplicationData;
