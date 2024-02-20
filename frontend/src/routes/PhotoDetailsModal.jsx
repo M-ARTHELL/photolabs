@@ -5,7 +5,7 @@ import closeSymbol from '../assets/closeSymbol.svg';
 import PhotoFavButton from 'components/PhotoFavButton';
 
 const PhotoDetailsModal = (props) => {
-
+  
   return (
     <div className="photo-details-modal">
 
@@ -39,9 +39,10 @@ const PhotoDetailsModal = (props) => {
       </div>
       <div className='photo-details-modal__images'>
       <h3>Similar Photos</h3>
+
       <PhotoList
         toggleModal={props.toggleModal}
-        isModalVisible={props.isModalVisible}
+        photos={props.photos}
         setModalVisible={props.setModalVisible}
         favorites={props.favorites}
         setFavorites={props.setFavorites}
