@@ -3,9 +3,10 @@ import "../styles/TopicListItem.scss";
 
 
 const TopicListItem = (props) => {
+  console.log(props)
   return (
-    <div className="topic-list__item">
-      <p className="top-nav-bar__topic-list">{props.sampleData.title}</p>
+    <div className="top-nav-bar__topic-list">
+      <p className="topic-list__item" onClick={() => props.selectedTopic(props.topic.id)}>{props.topic.title}</p>
     </div>
   );
 };

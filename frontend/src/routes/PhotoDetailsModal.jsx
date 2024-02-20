@@ -5,7 +5,6 @@ import closeSymbol from '../assets/closeSymbol.svg';
 import PhotoFavButton from 'components/PhotoFavButton';
 
 const PhotoDetailsModal = (props) => {
-  console.log(props)
 
   return (
     <div className="photo-details-modal">

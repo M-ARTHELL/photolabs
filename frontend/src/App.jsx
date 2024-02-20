@@ -6,7 +6,7 @@ import './App.scss';
 
 const App = () => {
   
-  const {toggleFavs, toggleModal, state} = useApplicationData();
+  const {toggleFavs, toggleModal, selectedTopic, state} = useApplicationData();
 
   return (
     <div className="App">
@@ -18,6 +18,7 @@ const App = () => {
       toggleFavs={toggleFavs}
       photos={state.photoData}
       topics={state.topicData}
+      selectedTopic={selectedTopic}
       />
 
       {state.specifiedPhoto &&

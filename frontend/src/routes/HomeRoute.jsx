@@ -11,6 +11,7 @@ const HomeRoute = (props) => {
         favorites={props.favorites}
         toggleFavs={props.toggleFavs}
         topics={props.topics}
+        selectedTopic={props.selectedTopic}
       />
       <PhotoList
         toggleModal={props.toggleModal}
