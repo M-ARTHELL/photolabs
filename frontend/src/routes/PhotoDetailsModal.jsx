@@ -22,27 +22,25 @@ const PhotoDetailsModal = ({photos, toggleModal, specifiedPhoto, favorites, setF
 
         <img src={specifiedPhoto.urls.full} className='photo-details-modal__image'></img>
 
-        <div className='photo-details-modal__header'>
-          <div className="photo-details-modal__photographer-info">
+        <div className="photo-details-modal__photographer-details">
 
-            <img src={specifiedPhoto.user.profile}  className='photo-details-modal__photographer-profile'/>
+          <img src={specifiedPhoto.user.profile}  className='photo-details-modal__photographer-profile'/>
 
-            <div className='photo-details-modal__photographer-details'>
-              {specifiedPhoto.user.name}
+          <div className='photo-details-modal__photographer-info'>
+            {specifiedPhoto.user.name}
+
+            <div className='photo-details-modal__photographer-location'>{specifiedPhoto.location.city}, {specifiedPhoto.location.country}
             </div>
-
-           <div className='photo-details-modal__photographer-location'>{specifiedPhoto.location.city}, {specifiedPhoto.location.country}
-           </div>
           </div>
         </div>
-       <h3>Similar Photos</h3>
-       <PhotoList
-        toggleModal={toggleModal}
-        photos={photos}
-        setModalVisible={setModalVisible}
-        favorites={favorites}
-        setFavorites={setFavorites}
-        toggleFavs={toggleFavs}
+      <h3>Similar Photos</h3>
+      <PhotoList
+      toggleModal={toggleModal}
+      photos={photos}
+      setModalVisible={setModalVisible}
+      favorites={favorites}
+      setFavorites={setFavorites}
+      toggleFavs={toggleFavs}
       />
       </div>
     </div>
