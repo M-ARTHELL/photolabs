@@ -9,8 +9,8 @@ Users can favorite photos by clicking the heart button that's added to them. Doi
 
 
 ## Screenshots
-![the homepage showing 5 categories on the navbar at the top, and 9 photos underneath](/photolabs/images/homescreen.png)
-![the homepage with the photo modal open in front of it, showing a photo of a leopard, the uploader's name, image, and location, and listing two photos underneath.](/photolabs/images/modalscreen.png)
+![the homepage showing 5 categories on the navbar at the top, and 9 photos underneath](/images/homescreen.png)
+![the homepage with the photo modal open in front of it, showing a photo of a leopard, the uploader's name, image, and location, and listing two photos underneath.](/images/modalscreen.png)
 
 ## Setup
 
